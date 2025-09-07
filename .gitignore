@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+__pycache__
+/__pycache__/
+/__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+
+# Env
+.env
+.venv/
+venv/
+
+# Certs
+App/certs/
+*.pem
+
+# IDE
+.vscode/
+.idea/
+*.swp
