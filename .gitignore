@@ -18,6 +18,9 @@ venv/
 App/certs/
 *.pem
 
+# Alembic
+# alembic.ini
+
 # IDE
 .vscode/
 .idea/

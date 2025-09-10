@@ -5,9 +5,7 @@ import uvicorn
 from core.settings import settings
 from db.db_helper import db_helper
 from models.base import Base
-
-app = FastAPI()
-
+from api.v1.routes.user_router import router as jwt_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -15,6 +13,9 @@ async def lifespan(app: FastAPI):
         await conn.run_sync(Base.metadata.create_all)
     yield
 
+
+app = FastAPI(lifespan=lifespan)
+app.include_router(jwt_router)
 
 @app.get("/")
 def read_root():
