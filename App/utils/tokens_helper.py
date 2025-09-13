@@ -1,9 +1,9 @@
 from datetime import timedelta
 from pydantic import BaseModel
 
-from core.settings import settings
-from utils.jwt_utils import decode_jwt, encode_jwt
-from models.users import User
+from App.core.settings import settings
+from App.utils.jwt_utils import decode_jwt, encode_jwt
+from App.models.users import User
 
 TOKEN_TYPE_FIELD = "type"
 ACCESS_TOKEN_TYPE = "access"

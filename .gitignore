@@ -11,6 +11,7 @@ __pycache__
 
 # Env
 .env
+venv/
 # Certs
 App/certs/
 *.pem
