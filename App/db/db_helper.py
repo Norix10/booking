@@ -26,12 +26,13 @@ class DataBaseHelper:
             session_factory=self.session_factory,
             scopefunc=current_task,
         )
+        
     async def get_db(self) -> AsyncGenerator[AsyncSession, None]:
-        session = self.scoped_session
+        session = self.scoped_session()
         try:
             yield session
         finally:
-            await session.remove()
+            await self.scoped_session.remove()
 
 db_helper = DataBaseHelper(
     url=settings.url,

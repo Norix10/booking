@@ -31,11 +31,11 @@ def encode_jwt(
 
 
 def decode_jwt(
-    payload,
+    token,
     public_key=settings.auth_jwt.public_key_path.read_text(),
     algorithm=settings.auth_jwt.algorithm,
 ):
-    decoded = jwt.decode(payload, public_key, algorithms=[algorithm])
+    decoded = jwt.decode(token, public_key, algorithms=[algorithm])
     return decoded
 
 

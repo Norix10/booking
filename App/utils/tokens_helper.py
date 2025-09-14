@@ -15,6 +15,8 @@ class TokenInfo(BaseModel):
     refresh_token: str
     token_type: str
 
+class AccessTokenOnly(BaseModel):
+    access_token: str
 
 def create_jwt(
     token_type: str,
@@ -34,7 +36,7 @@ def create_jwt(
 def create_access_token(user) -> str:
     jwt_payload = {
         "sub": user.email,
-        "usernmame": user.username,
+        "username": user.username,
         "email": user.email,
     }
     return create_jwt(
