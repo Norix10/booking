@@ -23,6 +23,10 @@ dependencies = [
 ]
 
 [tool.poetry]
+name = "booking"
+version = "0.1.0"
+description = ""
+package-mode = false
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.4.2"
