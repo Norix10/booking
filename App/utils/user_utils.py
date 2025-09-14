@@ -44,6 +44,8 @@ async def validate_auth_user(user_data: UserLogin, session: AsyncSession) -> Use
 
     if not user or not validate_password(user_data.password, user.hashed_password):
         raise unauth_error
+    if not user.active:
+        raise user_inact_error
     return user
 
 
@@ -78,7 +80,7 @@ async def get_current_user_db(
 
 async def get_user_by_sub(
     payload: dict, session: AsyncSession = Depends(db_helper.get_db)
-) -> UserRead:
+) -> User:
     email = payload.get("sub")
     if not email:
         raise token_error
@@ -87,7 +89,8 @@ async def get_user_by_sub(
     user = result.scalar_one_or_none()
     if not user:
         raise token_error
-    return UserRead.model_validate(user)
+
+    return user
 
 
 class UserGetterFromToken:
